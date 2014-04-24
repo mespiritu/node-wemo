@@ -33,6 +33,7 @@ WeMo.Search = function(friendlyName, callback) {
 			var location = url.parse(msg.LOCATION);
 			request.get(location.href, function(err, res, xml) {
 				if (err) {
+					console.log('Failed getting wemo xml from', location, err.stack);
 					return;
 				}
 				xml2js.parseString(xml, function(err, json) {
