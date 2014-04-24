@@ -32,6 +32,9 @@ WeMo.Search = function(friendlyName, callback) {
 		if (msg.ST === WeMo.ST) {
 			var location = url.parse(msg.LOCATION);
 			request.get(location.href, function(err, res, xml) {
+				if (err) {
+					return;
+				}
 				xml2js.parseString(xml, function(err, json) {
 					var device = { ip: location.hostname, port: location.port };
 					for (var key in json.root.device[0]) {
