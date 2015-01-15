@@ -5,9 +5,14 @@
     "name": "hecomi",
     "email": "info@hecomi.com"
   },
+  "repository" :
+  {
+    "type" : "git",
+    "url" : "git@github.com:mespiritu/node-wemo.git"
+  },
   "main": "wemo",
   "dependencies": {
-    "node-ssdp": "git@github.com:mespiritu/node-ssdp.git#v0.2.2",
+    "node-ssdp": "git://github.com/mespiritu/node-ssdp.git#0.2.2.1",
     "request": "2.36.0",
     "xml2js": "0.4.3"
   },
