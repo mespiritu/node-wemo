@@ -11,20 +11,14 @@ var WeMo = function(ip, port) {
 
 WeMo.SearchTimeout = 5000; /* msec */
 WeMo.ST = 'urn:Belkin:service:basicevent:1';
-WeMo._client = new SSDP();
 
 WeMo.Search = function(friendlyName, callback) {
 	if (friendlyName !== undefined) {
 		return WeMo.SearchByFriendlyName(friendlyName, callback);
 	}
 
-	//var client = new SSDP();
-        var client = WeMo._client;
-	// MEMO: Remove process.exit listener registerd in SSDP constructor
-	//var processExitListeners = process.listeners('exit');
-	//process.removeListener('exit', processExitListeners[processExitListeners.length - 1]);
+	var client = new SSDP();
 
-	//client.setMaxListeners(0);
 	client.on('response', function (msg, rinfo) {
 		msg = msg.split('\r\n').reduce(function(map, item) {
 			var data = item.match(/^(.*?): (.*?)$/);
